@@ -30,6 +30,7 @@ function DrawingPanel({ width, height, bgColor }) {
 
     const changeColorHandler = (color) => {
         setSelectedColor(color.hex);
+        setCursor('draw');
     }
 
     const onExportImageHandler = () => {
