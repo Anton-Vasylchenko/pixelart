@@ -1,0 +1,15 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(195, 195, 195);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: fit-content;
+}

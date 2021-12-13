@@ -1,0 +1,23 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  height: 2rem;
+  width: 5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: rgb(112, 112, 112);
+  border: 1px solid rgb(66, 66, 66);
+  border-radius: 0.25rem;
+  margin: 0 1rem 0.5rem 1rem;
+  padding-left: 1rem;
+  color: white;
+
+  &:focus {
+    outline: none !important;
+    border-color: rgb(85, 158, 177);
+    box-shadow: 0 0 0.5rem grey;
+  }
+}

@@ -1,0 +1,56 @@
+.editor {
+  position: relative;
+  .size-divider {
+    position: relative;
+    top: 10px;
+    opacity: 0.5;
+  }
+}
+
+.editor-title {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgb(194, 194, 194);
+  margin-top: 0px;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.options {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.circle-picker {
+  margin-bottom: 1.5rem !important;
+}
+
+.background-modal {
+  position: absolute;
+  left: 80px;
+  top: 180px;
+}
+
+.background-color {
+  background: rgb(91, 90, 116);
+  padding: 10px;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: rgb(49, 48, 73);
+  }
+
+  span {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    display: inline-block;
+  }
+}

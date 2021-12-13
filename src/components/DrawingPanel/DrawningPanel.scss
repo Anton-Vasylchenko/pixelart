@@ -1,0 +1,63 @@
+.drawning-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+
+  .pixels {
+    margin-bottom: 20px;
+  }
+}
+
+.draw-cursor {
+  cursor: url('../../assets/img/draw-cursor.png'), pointer;
+}
+
+.eraser-cursor {
+  cursor: url('../../assets/img/eraser-cursor.png'), pointer;
+}
+
+.bg-circle {
+  background: rgb(21, 7, 98);
+  padding: 10px;
+  height: 110px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  background: rgb(195, 195, 195);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  &__item {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 100%;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(196, 144, 174);
+    }
+  }
+}
+
+.draw-button {
+  width: 20px;
+  height: 20px;
+  background-image: url('../../assets/img/draw-cursor.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.eraser-button {
+  width: 20px;
+  height: 20px;
+  background-image: url('../../assets/img/eraser-cursor.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tool-active {
+  background-color: rgb(180, 103, 170);
+}
