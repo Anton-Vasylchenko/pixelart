@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DrawingPanel from '../DrawingPanel';
 import { GithubPicker } from 'react-color';
 import circleColors from '../../config/circlePickerConfig';
+import Card from '../UI/Card';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import useComponentVisible from '../../hooks/useComponentVisible';
@@ -58,46 +59,46 @@ function Editor() {
     return (
         <>
             {error && <Alert text={error}></Alert>}
-
-            <div className={classes.wrapper}>
-                {!hideOptions &&
-                    <div className={classes.editor}>
-                        <div className={classes['editor-title']}>Options:</div>
-                        <div className={classes.options}>
-                            <Input
-                                defaultValue={panelHeight}
-                                onChangeHandler={onChangeHeightInput}
-                                type={"number"}
-                                label={"Height"}
-                            />
-
-                            <span className={classes['size-divider']}>x</span>
-
-                            <Input
-                                defaultValue={panelWidth}
-                                onChangeHandler={onChangeWidthInput}
-                                type={"number"}
-                                label={"Width"}
-                            />
-                        </div>
-
-                        <div className={classes['background-color']} onClick={showBackgroundModal}>
-                            Background: <span style={{ background: background }}></span>
-                        </div>
-
-                        {isComponentVisible &&
-                            <div className={classes['background-modal']} ref={ref}>
-                                <GithubPicker
-                                    color={background}
-                                    onChangeComplete={changeBackgroundHandler}
-                                    colors={circleColors}
+            <Card>
+                <div className={classes.wrapper}>
+                    {!hideOptions &&
+                        <div className={classes.editor}>
+                            <div className={classes['editor-title']}>Options:</div>
+                            <div className={classes.options}>
+                                <Input
+                                    defaultValue={panelHeight}
+                                    onChangeHandler={onChangeHeightInput}
+                                    type={"number"}
+                                    label={"Height"}
                                 />
-                            </div>}
-                    </div>}
 
-                {!error && <Button onClickHandler={initialDrawingPanel}>{buttonText}</Button>}
-            </div>
+                                <span className={classes['size-divider']}>x</span>
 
+                                <Input
+                                    defaultValue={panelWidth}
+                                    onChangeHandler={onChangeWidthInput}
+                                    type={"number"}
+                                    label={"Width"}
+                                />
+                            </div>
+
+                            <div className={classes['background-color']} onClick={showBackgroundModal}>
+                                Background: <span style={{ background: background }}></span>
+                            </div>
+
+                            {isComponentVisible &&
+                                <div className={classes['background-modal']} ref={ref}>
+                                    <GithubPicker
+                                        color={background}
+                                        onChangeComplete={changeBackgroundHandler}
+                                        colors={circleColors}
+                                    />
+                                </div>}
+                        </div>}
+
+                    {!error && <Button onClickHandler={initialDrawingPanel}>{buttonText}</Button>}
+                </div>
+            </Card>
             {
                 hideOptions && <DrawingPanel
                     bgColor={background}
