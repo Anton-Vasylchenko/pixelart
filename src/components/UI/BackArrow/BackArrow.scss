@@ -1,0 +1,27 @@
+.back-arrow {
+  left: 10px;
+  top: 5px;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 50%;
+  position: absolute;
+  img {
+    object-fit: contain;
+    width: 60px;
+  }
+}
+
+.arrow-icon {
+  fill: #6283ee;
+}
+
+@media only screen and (max-width: 992px) {
+  .back-arrow {
+    width: 25px;
+    height: 25px;
+    left: 3px;
+    top: 2px;
+  }
+}

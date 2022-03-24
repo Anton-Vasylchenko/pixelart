@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Pixel.scss';
 
-function Pixel({ color, clickIsHolding, bgColor }) {
+function Pixel({ color, clickIsHolding, bgColor, id }) {
     const [pixelColor, setPixelColor] = useState(bgColor);
     const [oldColor, setOldColor] = useState(pixelColor);
 
@@ -30,6 +30,7 @@ function Pixel({ color, clickIsHolding, bgColor }) {
 
     return (
         <div className="pixel"
+            id={id}
             onDragStart={disableDragHandler}
             onClick={applyColor}
             onMouseEnter={changeColorOnHover}

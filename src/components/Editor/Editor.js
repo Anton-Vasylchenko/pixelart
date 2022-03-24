@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import DrawingPanel from '../DrawingPanel';
 import { GithubPicker } from 'react-color';
+import circleColors from '../../config/circlePickerConfig';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
-import Card from '../UI/Card';
 import useComponentVisible from '../../hooks/useComponentVisible';
 
-import './Editor.scss';
+import classes from './Editor.module.scss';
 import Alert from '../UI/Alert';
 
 function Editor() {
@@ -20,7 +20,7 @@ function Editor() {
 
     const initialDrawingPanel = () => {
         if (panelWidth > 50 || panelWidth < 2) {
-            setError('Width must be less than 50 and more than 2')
+            setError('Max size is 50 x 50')
             return;
         }
 
@@ -33,7 +33,7 @@ function Editor() {
             return;
         }
         setHideOptions(prevState => !prevState);
-        !hideOptions ? setButtonText("reset dimensions") : setButtonText("start");
+        !hideOptions ? setButtonText("reset options") : setButtonText("start");
     }
 
     const onChangeHeightInput = (e) => {
@@ -59,11 +59,11 @@ function Editor() {
         <>
             {error && <Alert text={error}></Alert>}
 
-            <Card>
+            <div className={classes.wrapper}>
                 {!hideOptions &&
-                    <div className="editor">
-                        <div className="editor-title">Dimensions:</div>
-                        <div className="options">
+                    <div className={classes.editor}>
+                        <div className={classes['editor-title']}>Options:</div>
+                        <div className={classes.options}>
                             <Input
                                 defaultValue={panelHeight}
                                 onChangeHandler={onChangeHeightInput}
@@ -71,7 +71,7 @@ function Editor() {
                                 label={"Height"}
                             />
 
-                            <span className='size-divider'>x</span>
+                            <span className={classes['size-divider']}>x</span>
 
                             <Input
                                 defaultValue={panelWidth}
@@ -81,22 +81,22 @@ function Editor() {
                             />
                         </div>
 
-                        <div className="background-color" onClick={showBackgroundModal}>
-                            Background color: <span style={{ background: background }}></span>
+                        <div className={classes['background-color']} onClick={showBackgroundModal}>
+                            Background: <span style={{ background: background }}></span>
                         </div>
 
                         {isComponentVisible &&
-                            <div className="background-modal" ref={ref}>
+                            <div className={classes['background-modal']} ref={ref}>
                                 <GithubPicker
                                     color={background}
                                     onChangeComplete={changeBackgroundHandler}
-                                    colors={['#ffffff', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB']}
+                                    colors={circleColors}
                                 />
                             </div>}
                     </div>}
 
-                {!error && <Button onClickHandler={initialDrawingPanel} buttonText={buttonText} />}
-            </Card>
+                {!error && <Button onClickHandler={initialDrawingPanel}>{buttonText}</Button>}
+            </div>
 
             {
                 hideOptions && <DrawingPanel

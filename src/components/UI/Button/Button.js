@@ -1,10 +1,13 @@
 import React from 'react'
 
-import './Button.scss';
+import classes from './Button.module.scss';
 
-function Button({ buttonText, onClickHandler }) {
+function Button({ children, onClickHandler, className }) {
+
+    const classNames = className ? `${classes.button} ${className}` : `${classes.button}`;
+
     return (
-        <button className="button" onClick={onClickHandler}> {buttonText} </button>
+        <button className={classNames} onClick={onClickHandler}> {children} </button>
     )
 }
 

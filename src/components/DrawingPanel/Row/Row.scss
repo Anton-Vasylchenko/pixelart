@@ -1,4 +1,4 @@
 .row {
   display: flex;
-  width: fit-content;
+  user-select: none; /* supported by Chrome and Opera */
 }

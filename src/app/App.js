@@ -1,15 +1,35 @@
-import './App.scss';
+import { Route, Switch, Redirect } from "react-router-dom";
+
+import Layout from "../components/Layout/Layout";
 import Editor from '../components/Editor';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
+import ImageDetail from "../Pages/ImageDetail";
+import Home from '../Pages/Home';
+
+import '../assets/fonts/04B_30__.TTF';
+import '../assets/fonts/Retro Gaming.ttf';
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Editor />
-      <Footer />
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/paint" exact>
+          <Editor />
+        </Route>
+
+        <Route path="/images/:imageId">
+          <ImageDetail />
+        </Route>
+
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 

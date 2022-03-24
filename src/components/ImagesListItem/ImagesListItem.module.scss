@@ -1,0 +1,30 @@
+.wrapper {
+  display: inline-block;
+  outline: 1px solid grey;
+  background: rgb(241, 241, 241);
+  margin: 10px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.356);
+  .image img {
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    cursor: pointer;
+    outline: 1px solid rgba(65, 65, 65, 0.63);
+    transition: 0.3s ease;
+    &:hover {
+      outline: 5px solid rgb(63, 63, 63);
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding-bottom: 5px;
+    .date {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+}

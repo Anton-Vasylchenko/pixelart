@@ -1,0 +1,36 @@
+nav {
+  display: flex;
+  margin-right: 10px;
+  ul {
+    display: flex;
+    height: 100%;
+    align-items: center !important;
+
+    li {
+      font-family: 'RetroGaming';
+      display: flex;
+      margin: 0 10px;
+      font-size: 20px;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+.active {
+  color: yellow;
+}
+
+@media screen and (max-width: 800px) {
+  nav {
+    ul {
+      li {
+        font-family: 'RetroGaming';
+        display: flex;
+        margin: 0 10px;
+        font-size: 14px;
+      }
+    }
+  }
+}

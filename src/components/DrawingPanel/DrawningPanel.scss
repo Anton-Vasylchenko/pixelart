@@ -1,44 +1,59 @@
 .drawning-panel {
+  justify-content: center;
+  padding-top: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 
   .pixels {
-    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 100%;
+    height: 100%;
+    outline: 5px solid rgb(42, 42, 42);
+    overflow: -moz-hidden-unscrollable;
+    overflow: hidden;
   }
 }
 
 .draw-cursor {
   cursor: url('../../assets/img/draw-cursor.png'), pointer;
+  user-select: none; /* supported by Chrome and Opera */
 }
 
 .eraser-cursor {
   cursor: url('../../assets/img/eraser-cursor.png'), pointer;
 }
-
-.bg-circle {
-  background: rgb(255, 255, 255);
-  outline: 1px solid grey;
-  padding: 10px;
-  height: 110px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-}
-
-.toolbar {
+.tools {
+  width: 300px;
   display: flex;
-  background: rgb(195, 195, 195);
-  border-radius: 10px;
-  margin-bottom: 12px;
-  &__item {
-    margin: 10px;
-    padding: 5px;
-    border-radius: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .bg-circle {
+    background: rgba(236, 229, 233, 0.548);
+    outline: 1px solid grey;
     padding: 10px;
-    cursor: pointer;
-    &:hover {
-      background-color: rgb(196, 144, 174);
+    min-height: 110px;
+    margin-bottom: 20px;
+  }
+
+  .toolbar {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    background: rgb(195, 195, 195);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    &__item {
+      margin: 10px;
+      padding: 5px;
+      border-radius: 100%;
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(196, 144, 174);
+      }
     }
   }
 }
@@ -61,4 +76,22 @@
 
 .tool-active {
   background-color: rgb(180, 103, 170);
+}
+
+.actions {
+  display: flex;
+  height: 150px;
+  width: 220px;
+  flex-direction: column;
+  button {
+    margin: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .drawning-panel {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

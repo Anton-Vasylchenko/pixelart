@@ -1,0 +1,50 @@
+.header {
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__logo {
+    width: 300px;
+    font-family: '04B';
+    display: flex;
+    margin: 0 10px;
+    a {
+      color: white;
+      &:hover {
+        color: rgb(151, 255, 232);
+      }
+    }
+  }
+
+  .logo__img {
+    img {
+      object-fit: contain;
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .logo__title {
+    text-align: center;
+    margin: 10px;
+    color: rgb(181, 245, 229);
+    cursor: default;
+    text-shadow: 2px 2px 0px black;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    .logo__img {
+      img {
+        object-fit: contain;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}

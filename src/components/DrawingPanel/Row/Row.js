@@ -9,7 +9,7 @@ function Row(props) {
     let pixels = [];
 
     for (let i = 0; i < width; i++) {
-        pixels.push(<Pixel clickIsHolding={clickIsHolding} key={i} bgColor={bgColor} color={selectedColor} />)
+        pixels.push(<Pixel clickIsHolding={clickIsHolding} key={i} id={props.idCount + ' ' + i} bgColor={bgColor} color={selectedColor} />)
     }
 
     return (
