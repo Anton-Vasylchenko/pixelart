@@ -28,3 +28,14 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    .image img {
+      object-fit: cover;
+      width: 140px;
+      height: 140px;
+      margin: 10px;
+    }
+  }
+}

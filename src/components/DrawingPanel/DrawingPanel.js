@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Row from './Row';
 import { exportComponentAsPNG } from "react-component-export-image"
 import { SliderPicker as ColorPicker } from 'react-color';
@@ -101,7 +101,7 @@ function DrawingPanel({ width, height, bgColor }) {
         <Card>
 
             {status === 'pending' && <Loader />}
-            {status === 'completed' && <p className='success'>Image was saved!</p>}
+            {status === 'completed' && <p className='success'>Image saved!</p>}
 
             <div className="drawning-panel">
                 <div className="photoshop">

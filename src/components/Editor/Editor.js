@@ -6,6 +6,7 @@ import Card from '../UI/Card';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import useComponentVisible from '../../hooks/useComponentVisible';
+import useIsMobile from '../../hooks/useIsMobile';
 
 import classes from './Editor.module.scss';
 import Alert from '../UI/Alert';
@@ -19,14 +20,25 @@ function Editor() {
     const [error, setError] = useState(false)
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
 
+    const isMobile = useIsMobile();
+
     const initialDrawingPanel = () => {
-        if (panelWidth > 50 || panelWidth < 2) {
-            setError('Max size is 50 x 50')
+        const maxSize = isMobile ? 25 : 50;
+
+        if (panelWidth > maxSize) {
+            setError(`Max width is ${maxSize}`);
             return;
         }
-
-        if (panelHeight > 50 || panelHeight < 2) {
-            setError('Height must be less than 50 and more than 2')
+        if (panelWidth < 2) {
+            setError('Minimum width is 2')
+            return;
+        }
+        if (panelHeight > 50) {
+            setError(`Max height is ${maxSize}`);
+            return;
+        }
+        if (panelHeight < 2) {
+            setError('Minimum height is 2')
             return;
         }
 

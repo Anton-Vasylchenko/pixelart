@@ -21,3 +21,11 @@
     box-shadow: 0 0 0.5rem grey;
   }
 }
+
+@media screen and(max-width: 1200px) {
+  .input-wrapper {
+    .input {
+      padding-left: 0;
+    }
+  }
+}
