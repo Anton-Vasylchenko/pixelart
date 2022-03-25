@@ -9,7 +9,7 @@ function Footer() {
     return (
         <Card>
             <div className={classes.footer}>
-                {year} | Create by Dikusor (:
+                {year} | Created by Dikusor (:
             </div>
         </Card>
     )
