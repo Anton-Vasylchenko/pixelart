@@ -33,7 +33,7 @@ function Editor() {
             setError('Minimum width is 2')
             return;
         }
-        if (panelHeight > 50) {
+        if (panelHeight > maxSize) {
             setError(`Max height is ${maxSize}`);
             return;
         }

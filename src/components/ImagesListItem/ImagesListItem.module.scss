@@ -31,10 +31,11 @@
 
 @media screen and (max-width: 800px) {
   .wrapper {
+    margin: 5px;
     .image img {
       object-fit: cover;
-      width: 140px;
-      height: 140px;
+      width: 125px;
+      height: 125px;
       margin: 10px;
     }
   }
