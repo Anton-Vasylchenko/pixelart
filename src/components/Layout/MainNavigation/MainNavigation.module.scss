@@ -24,11 +24,12 @@ nav {
 
 @media screen and (max-width: 800px) {
   nav {
+    margin-right: 0px;
     ul {
       li {
         font-family: 'RetroGaming';
         display: flex;
-        margin: 0 10px;
+        margin: 0 4px;
         font-size: 14px;
       }
     }

@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     &__logo {
-      width: 200px;
+      width: 300px;
       font-size: 14px;
       margin: 0;
     }
@@ -53,6 +53,12 @@
         height: 25px;
         width: 25px;
       }
+    }
+    .logo__title {
+      margin-left: 5px;
+      color: rgb(181, 245, 229);
+      cursor: default;
+      text-shadow: 2px 2px 0px black;
     }
   }
 }
