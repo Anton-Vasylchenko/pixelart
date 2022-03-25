@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import DrawingPanel from '../DrawingPanel';
 import { GithubPicker } from 'react-color';
 import circleColors from '../../config/circlePickerConfig';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
+import Loader from '../UI/Loader';
+import html2canvas from "html2canvas";
 import Input from '../UI/Input';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import useIsMobile from '../../hooks/useIsMobile';
+import { exportComponentAsPNG } from "react-component-export-image"
+import useCurrentDate from '../../hooks/useCurrentDate';
+import useHttp from '../../hooks/useHttp';
+import { addImage } from '../../lib/api';
 
 import classes from './Editor.module.scss';
 import Alert from '../UI/Alert';
@@ -19,6 +25,12 @@ function Editor() {
     const [background, setBackground] = useState("#ffffff")
     const [error, setError] = useState(false)
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+
+    const { sendRequest, status } = useHttp(addImage);
+
+    const date = useCurrentDate();
+
+    const panelRef = useRef();
 
     const isMobile = useIsMobile();
 
@@ -68,9 +80,32 @@ function Editor() {
         setIsComponentVisible(prevState => !prevState)
     }
 
+    const saveImageHandler = async () => {
+        const canvas = await html2canvas(panelRef.current, {
+            scale: 3,
+            backgroundColor: background
+        });
+
+        const image = canvas.toDataURL("image/jpg", 1.0);
+
+        const requestData = {
+            image,
+            date
+        }
+        sendRequest(requestData);
+    }
+
+    const onExportImageHandler = () => {
+        exportComponentAsPNG(panelRef, { fileName: 'pixelart' })
+    }
+
     return (
         <>
             {error && <Alert text={error}></Alert>}
+
+            {status === 'pending' && <Loader />}
+            {status === 'completed' && <Alert type={'success'} text={'Image saved!'}></Alert>}
+
             <Card>
                 <div className={classes.wrapper}>
                     {!hideOptions &&
@@ -109,14 +144,28 @@ function Editor() {
                         </div>}
 
                     {!error &&
-                        <Button onClickHandler={initialDrawingPanel}>
-                            {buttonText}
-                        </Button>
+                        <div className={classes.actions}>
+                            <Button onClickHandler={initialDrawingPanel}>
+                                {buttonText}
+                            </Button>
+
+                            {hideOptions && <>
+                                <Button onClickHandler={saveImageHandler}>
+                                    Save image
+                                </Button>
+
+                                <Button onClickHandler={onExportImageHandler}>
+                                    export as PNG
+                                </Button>
+                            </>}
+                        </div>
+
                     }
                 </div>
             </Card>
             {
                 hideOptions && <DrawingPanel
+                    panelRef={panelRef}
                     bgColor={background}
                     width={panelWidth}
                     height={panelHeight}

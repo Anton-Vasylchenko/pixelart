@@ -66,5 +66,16 @@
   }
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button {
+    margin: 5px;
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
 @media screen and (max-width: 645px) {
 }

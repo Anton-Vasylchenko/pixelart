@@ -1,28 +1,16 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import Row from './Row';
-import { exportComponentAsPNG } from "react-component-export-image"
-import { SliderPicker as ColorPicker } from 'react-color';
-import html2canvas from "html2canvas";
-import useHttp from '../../hooks/useHttp';
+import { SwatchesPicker as ColorPicker } from 'react-color';
 import Card from '../UI/Card';
-import Loader from '../UI/Loader';
-import Button from '../UI/Button';
-import useCurrentDate from '../../hooks/useCurrentDate';
-import { addImage } from '../../lib/api';
 
 import './DrawningPanel.scss';
 
-function DrawingPanel({ width, height, bgColor }) {
-    const { sendRequest, status } = useHttp(addImage);
-
+function DrawingPanel({ width, height, bgColor, panelRef }) {
     const [clickIsHolding, setClickIsHolding] = React.useState(false);
     const [selectedColor, setSelectedColor] = useState("#000000");
     const [prevSelectedColor, setPrevSelectedColor] = useState("#f44336");
     const [cursor, setCursor] = useState('draw');
 
-    const date = useCurrentDate();
-
-    const panelRef = useRef();
     const rowsRef = useRef();
 
     let rows = [];
@@ -53,10 +41,6 @@ function DrawingPanel({ width, height, bgColor }) {
         setCursor('draw');
     }
 
-    const onExportImageHandler = () => {
-        exportComponentAsPNG(panelRef, { fileName: 'pixelart' })
-    }
-
     const changeTool = (e) => {
         const toolName = e.target.id;
 
@@ -71,22 +55,6 @@ function DrawingPanel({ width, height, bgColor }) {
         setSelectedColor(prevSelectedColor);
     }
 
-    const saveImageHandler = async () => {
-        const canvas = await html2canvas(panelRef.current, {
-            scale: 3,
-            backgroundColor: bgColor
-        });
-
-        const image = canvas.toDataURL("image/jpg", 1.0);
-
-        const requestData = {
-            image,
-            date
-        }
-
-        sendRequest(requestData);
-    }
-
     const touchMove = (event) => {
         const x = event.touches[0].clientX;
         const y = event.touches[0].clientY;
@@ -99,15 +67,7 @@ function DrawingPanel({ width, height, bgColor }) {
 
     return (
         <Card>
-
-            {status === 'pending' && <Loader />}
-            {status === 'completed' && <p className='success'>Image saved!</p>}
-
             <div className="drawning-panel">
-                <div className="photoshop">
-
-                </div>
-
                 <div className="tools">
                     <div className="bg-circle">
                         <ColorPicker color={selectedColor}
@@ -128,16 +88,6 @@ function DrawingPanel({ width, height, bgColor }) {
                             onClick={changeTool}>
                         </div>
                     </div>
-
-                    <div className="actions">
-                        <Button onClickHandler={saveImageHandler}>
-                            Save image
-                        </Button>
-
-                        <Button onClickHandler={onExportImageHandler}>
-                            export as PNG
-                        </Button>
-                    </div>
                 </div>
 
                 <div ref={panelRef}
@@ -151,6 +101,16 @@ function DrawingPanel({ width, height, bgColor }) {
                         {rows}
                     </div>
                 </div>
+
+                {/* <div className="actions">
+                    <Button onClickHandler={saveImageHandler}>
+                        Save image
+                    </Button>
+
+                    <Button onClickHandler={onExportImageHandler}>
+                        export as PNG
+                    </Button>
+                </div> */}
             </div>
         </Card >
     )
