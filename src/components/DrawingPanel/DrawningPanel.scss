@@ -24,6 +24,7 @@
 .eraser-cursor {
   cursor: url('../../assets/img/eraser-cursor.png'), pointer;
 }
+
 .tools {
   width: 300px;
   display: flex;
@@ -34,10 +35,10 @@
     background: rgba(236, 229, 233, 0.548);
     outline: 1px solid grey;
     padding: 10px;
-    min-height: 110px;
+    width: 200px;
+    min-height: 50px;
     margin-bottom: 20px;
   }
-
   .toolbar {
     display: flex;
     width: 50%;
@@ -93,5 +94,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .tools .actions {
+    margin-top: -15px;
+    width: 300px;
+    display: flex;
+    height: 80px;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 12px;
+    align-items: center;
+    button {
+      font-size: 10px;
+      width: 100%;
+      padding: 5px 0;
+    }
   }
 }

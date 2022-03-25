@@ -3,7 +3,7 @@ import Pixel from '../Pixel';
 
 import './Row.scss';
 
-function Row(props) {
+const Row = (props) => {
     const { width, selectedColor, clickIsHolding, bgColor } = props;
 
     let pixels = [];
@@ -19,4 +19,4 @@ function Row(props) {
     )
 }
 
-export default Row
+export default React.memo(Row)

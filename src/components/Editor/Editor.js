@@ -14,7 +14,7 @@ function Editor() {
     const [panelWidth, setPanelWidth] = useState(16)
     const [panelHeight, setPanelHeight] = useState(16)
     const [hideOptions, setHideOptions] = useState(false)
-    const [buttonText, setButtonText] = useState("start")
+    const [buttonText, setButtonText] = useState("GO!")
     const [background, setBackground] = useState("#ffffff")
     const [error, setError] = useState(false)
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -63,7 +63,7 @@ function Editor() {
                 <div className={classes.wrapper}>
                     {!hideOptions &&
                         <div className={classes.editor}>
-                            <div className={classes['editor-title']}>Options:</div>
+                            <div className={classes['editor-title']}>Size:</div>
                             <div className={classes.options}>
                                 <Input
                                     defaultValue={panelHeight}
@@ -96,7 +96,11 @@ function Editor() {
                                 </div>}
                         </div>}
 
-                    {!error && <Button onClickHandler={initialDrawingPanel}>{buttonText}</Button>}
+                    {!error &&
+                        <Button onClickHandler={initialDrawingPanel}>
+                            {buttonText}
+                        </Button>
+                    }
                 </div>
             </Card>
             {

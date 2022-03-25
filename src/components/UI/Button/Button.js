@@ -11,4 +11,4 @@ function Button({ children, onClickHandler, className }) {
     )
 }
 
-export default Button
+export default React.memo(Button)

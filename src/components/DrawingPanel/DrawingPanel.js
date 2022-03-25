@@ -1,14 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import Row from './Row';
 import { exportComponentAsPNG } from "react-component-export-image"
-import { CirclePicker } from 'react-color';
+import { SliderPicker as ColorPicker } from 'react-color';
 import html2canvas from "html2canvas";
 import useHttp from '../../hooks/useHttp';
 import Card from '../UI/Card';
 import Loader from '../UI/Loader';
 import Button from '../UI/Button';
 import useCurrentDate from '../../hooks/useCurrentDate';
-import circleColors from '../../config/circlePickerConfig';
 import { addImage } from '../../lib/api';
 
 import './DrawningPanel.scss';
@@ -105,12 +104,14 @@ function DrawingPanel({ width, height, bgColor }) {
             {status === 'completed' && <p className='success'>Image was saved!</p>}
 
             <div className="drawning-panel">
+                <div className="photoshop">
+
+                </div>
+
                 <div className="tools">
                     <div className="bg-circle">
-                        <CirclePicker color={selectedColor}
-                            onChangeComplete={changeColorHandler}
-                            colors={circleColors}
-                        />
+                        <ColorPicker color={selectedColor}
+                            onChangeComplete={changeColorHandler} />
                     </div>
 
                     <div className="toolbar">
