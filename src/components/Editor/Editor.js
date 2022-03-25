@@ -59,7 +59,7 @@ function Editor() {
             return;
         }
         setHideOptions(prevState => !prevState);
-        !hideOptions ? setButtonText("reset options") : setButtonText("start");
+        !hideOptions ? setButtonText("reset options") : setButtonText("GO!");
     }
 
     const onChangeHeightInput = (e) => {

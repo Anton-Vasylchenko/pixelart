@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Row from './Row';
 import { SwatchesPicker as ColorPicker } from 'react-color';
+import useIsMobile from '../../hooks/useIsMobile';
 import Card from '../UI/Card';
 
 import './DrawningPanel.scss';
@@ -10,6 +11,8 @@ function DrawingPanel({ width, height, bgColor, panelRef }) {
     const [selectedColor, setSelectedColor] = useState("#000000");
     const [prevSelectedColor, setPrevSelectedColor] = useState("#f44336");
     const [cursor, setCursor] = useState('draw');
+
+    const isMobile = useIsMobile();
 
     const rowsRef = useRef();
 
@@ -70,8 +73,12 @@ function DrawingPanel({ width, height, bgColor, panelRef }) {
             <div className="drawning-panel">
                 <div className="tools">
                     <div className="bg-circle">
-                        <ColorPicker color={selectedColor}
-                            onChangeComplete={changeColorHandler} />
+                        <ColorPicker
+                            width={isMobile.width > 800 ? 290 : 320}
+                            height={isMobile.width > 800 ? 200 : 150}
+                            color={selectedColor}
+                            onChangeComplete={changeColorHandler}
+                        />
                     </div>
 
                     <div className="toolbar">

@@ -1,6 +1,6 @@
 # ABOUT PROJECT
 
-It is a simple app where you can draw and save pixel art!
+An app where you can draw in pixel art style and save your pictures
 
 # DEMO
 
