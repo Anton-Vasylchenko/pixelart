@@ -31,10 +31,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 30px;
   .bg-circle {
     background: rgba(236, 229, 233, 0.548);
     outline: 1px solid grey;
-    padding: 10px;
     min-height: 50px;
     margin-bottom: 8px;
   }
@@ -88,25 +88,28 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 977px) {
   .drawning-panel {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .tools .actions {
-    margin-top: -15px;
-    width: 300px;
-    display: flex;
-    height: 80px;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 12px;
-    align-items: center;
-    button {
-      font-size: 10px;
-      width: 100%;
-      padding: 5px 0;
+  .tools {
+    margin-left: 0;
+    .actions {
+      margin-top: -15px;
+      width: 300px;
+      display: flex;
+      height: 80px;
+      flex-direction: row;
+      justify-content: center;
+      font-size: 12px;
+      align-items: center;
+      button {
+        font-size: 10px;
+        width: 100%;
+        padding: 5px 0;
+      }
     }
   }
 }

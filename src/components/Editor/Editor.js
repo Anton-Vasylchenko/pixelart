@@ -36,7 +36,7 @@ function Editor() {
     const isMobile = useWindowDimensions();
 
     const initialDrawingPanel = () => {
-        const maxSize = isMobile.width < 800 ? 25 : 50;
+        const maxSize = isMobile.width < 800 ? 20 : 35;
 
         if (panelWidth > maxSize) {
             setError(`Max width is ${maxSize}`);
