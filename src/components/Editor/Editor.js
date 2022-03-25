@@ -8,8 +8,9 @@ import Loader from '../UI/Loader';
 import html2canvas from "html2canvas";
 import Input from '../UI/Input';
 import useComponentVisible from '../../hooks/useComponentVisible';
-import useIsMobile from '../../hooks/useIsMobile';
-import { exportComponentAsPNG } from "react-component-export-image"
+// import useIsMobile from '../../hooks/useIsMobile';
+import useWindowDimensions from '../../hooks/useIsMobile';
+import { exportComponentAsPNG } from "react-component-export-image";
 import useCurrentDate from '../../hooks/useCurrentDate';
 import useHttp from '../../hooks/useHttp';
 import { addImage } from '../../lib/api';
@@ -32,10 +33,10 @@ function Editor() {
 
     const panelRef = useRef();
 
-    const isMobile = useIsMobile();
+    const isMobile = useWindowDimensions();
 
     const initialDrawingPanel = () => {
-        const maxSize = isMobile ? 25 : 50;
+        const maxSize = isMobile.width < 800 ? 25 : 50;
 
         if (panelWidth > maxSize) {
             setError(`Max width is ${maxSize}`);

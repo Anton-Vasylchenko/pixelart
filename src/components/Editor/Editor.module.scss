@@ -72,10 +72,20 @@
   justify-content: space-between;
   button {
     margin: 5px;
-    font-size: 12px;
-    padding: 5px;
+    font-size: 14px;
+    padding: 7px;
   }
 }
 
 @media screen and (max-width: 645px) {
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      margin: 5px;
+      font-size: 12px;
+      padding: 5px;
+    }
+  }
 }

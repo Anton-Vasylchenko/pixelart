@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Row from './Row';
 import { SwatchesPicker as ColorPicker } from 'react-color';
 import Card from '../UI/Card';
