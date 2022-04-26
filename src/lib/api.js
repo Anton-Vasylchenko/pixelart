@@ -1,4 +1,4 @@
-const FIREBASE_DOMAIN = 'https://pixelart-demo-default-rtdb.europe-west1.firebasedatabase.app/';
+const FIREBASE_DOMAIN = 'https://pixel-272c4-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function getResource(url) {
   const response = await fetch(`${url}.json`);
